@@ -1,10 +1,20 @@
+// import the apiUrl so we can make auth requests to our API
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// add a named export, that exports our signUp function
+// in other files, we can import it with `destructuring syntax`
+// ex. import { signUp } from '../../api/auth'
+//
+// signUp expects a credentials object with the email, password, and passwordConfirmation
+// in the same format from the SignUp component's state
 export const signUp = credentials => {
+  // make our axios request to sign up
   return axios({
+    // the method and url are the same from the jquery-ajax-token-auth lesson
     method: 'POST',
     url: apiUrl + '/sign-up',
+    // the data is the SignUp component's state
     data: {
       credentials: {
         email: credentials.email,
@@ -17,8 +27,10 @@ export const signUp = credentials => {
 
 export const signIn = credentials => {
   return axios({
+    // the method and url are the same from the jquery-ajax-token-auth lesson
     url: apiUrl + '/sign-in',
     method: 'POST',
+    // the same data as signUp (but we don't need the passwordConfirmation)
     data: {
       credentials: {
         email: credentials.email,

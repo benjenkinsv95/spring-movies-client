@@ -1,1 +1,7 @@
+// Set the bootstrap variant colors before we import bootstrap
+// so it knows about them
+$primary: #219ebc;
+$secondary: #ffb703;
+$info: #8ecae6;
+
 @import '~bootstrap/scss/bootstrap';
