@@ -15,6 +15,7 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import WithRouterHooksTest from './components/WithRouterHooksTest/WithRouterHooksTest'
 
 class App extends Component {
   constructor (props) {
@@ -106,6 +107,7 @@ class App extends Component {
             // and setUser to keep track of the user (for their token & email)
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
+          {/* Same as sign up, but using SignIn component and /sign-in path */}
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -117,7 +119,13 @@ class App extends Component {
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
+            // since ChangePassword needs to make authenticated requests, pass down
+            // the `user` as a prop
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+
+          <Route path='/with-router-hooks-test/:id' render={() => (
+            <WithRouterHooksTest/>
           )} />
         </main>
       </Fragment>

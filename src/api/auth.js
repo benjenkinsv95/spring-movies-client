@@ -52,8 +52,12 @@ export const signOut = user => {
 
 export const changePassword = (passwords, user) => {
   return axios({
+    // same url and method from jquery-ajax-token-auth
     url: apiUrl + '/change-password',
     method: 'PATCH',
+
+    // to make an authenticated request, we need an authorization header
+    // with the user's token (so the api knows who we are)
     headers: {
       'Authorization': `Token token=${user.token}`
     },

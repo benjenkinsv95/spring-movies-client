@@ -11,6 +11,7 @@ class SignIn extends Component {
   constructor (props) {
     super(props)
 
+    // like SignUp but no passwordConfirmation
     this.state = {
       email: '',
       password: ''
@@ -26,6 +27,7 @@ class SignIn extends Component {
 
     const { msgAlert, history, setUser } = this.props
 
+    // like SignUp but we don't call `signUp`
     signIn(this.state)
       .then(res => setUser(res.data.user))
       .then(() => msgAlert({
