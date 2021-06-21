@@ -40,10 +40,13 @@ export const signIn = credentials => {
   })
 }
 
+// to sign out, accept a user for their token
 export const signOut = user => {
   return axios({
+    // same url and method from jquery-ajax-token-auth
     url: apiUrl + '/sign-out',
     method: 'DELETE',
+    // make sure to add an authorization header
     headers: {
       'Authorization': `Token token=${user.token}`
     }

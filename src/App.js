@@ -77,6 +77,9 @@ class App extends Component {
 
     return (
       <Fragment>
+        {/* Add the top navbar to the screen.
+            pass the user prop (to show the signed in/out urls)
+            also for our user's email */ }
         <Header user={user} />
 
         {/* Map each msgAlert into an AutoDismissAlert component */}
@@ -114,8 +117,15 @@ class App extends Component {
 
           {/* An AuthenticatedRoute is like a Route, but it redirects you to the
               home page if you aren't signed it.
-              You *must* pass it a `user` (so it knows if you're signed in) */}
+              You *must* pass it a `user` (so it knows if you're signed in)
+
+              There are multiple ways to sign out. This way allows us to sign Out
+              by going to a specific path. */}
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+            // pass down the clearUser prop, so that we can set `user` to `null` after
+            // signing out
+            // since signOut needs to make authenticated requests, pass down
+            // the `user` as a prop
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
