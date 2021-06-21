@@ -87,8 +87,8 @@ class SignUp extends Component {
       }))
       // then send the user to the home page ('/').
       // this is very similar to <Redirect to='/' />
-      // .then(() => history.push('/'))
-      .then(() => history.push(this.props.redirectPath))
+      .then(() => history.push('/'))
+      // .then(() => history.push(this.props.redirectPath))
       .catch(error => {
         // if an error occurred, clear our credentials
         // by setting them to their original values
